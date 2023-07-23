@@ -1,0 +1,99 @@
+/* Estilos del formulario */
+.cotizador-form {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.cotizador-form h3 {
+  margin-top: 0;
+}
+
+/* Estilos para los campos de colores */
+.cotizador-color-selector {
+  margin-bottom: 20px;
+}
+
+.cotizador-color {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+/* Estilos para el campo de tallas */
+.cotizador-tallas-checkbox {
+  margin-bottom: 20px;
+}
+
+.cotizador-tallas-selector {
+  display: none;
+  margin-bottom: 20px;
+}
+
+/* Estilos para el campo de stock mínimo */
+.cotizador-stock-minimo {
+  margin-bottom: 20px;
+}
+
+/* Estilos para el botón de cotizar */
+.cotizador-form input[type="submit"] {
+  background-color: #0073aa;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cotizador-form input[type="submit"]:hover {
+  background-color: #005a87;
+}
+
+/* Estilos para el total del precio */
+.cotizador-total-price {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Estilos del formulario de configuración en el backend */
+.wrap .form-table {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.form-table th {
+  font-weight: normal;
+  padding: 10px 0;
+}
+
+.form-table td {
+  padding: 10px 0;
+}
+
+.form-table input[type="text"] {
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-table input[type="submit"] {
+  background-color: #0073aa;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-table input[type="submit"]:hover {
+  background-color: #005a87;
+}
