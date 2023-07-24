@@ -32,11 +32,11 @@ if ($idioma_plugin === 'en') {
 }
 ?>
 
-<div class="cotizador-form" data-base-price="<?php echo esc_attr($product->get_price()); ?>">
-    <h3><?php echo esc_html($cotiza_tu_producto_text); ?></h3>
+<div class="cotizador-form container mt-4 p-4 rounded bg-light">
+    <h3 class="mb-4"><?php echo esc_html($cotiza_tu_producto_text); ?></h3>
 
     <label for="tecnicas_marcado"><?php echo esc_html($tecnicas_marcaje_text); ?></label>
-    <select name="tecnicas_marcado" id="tecnicas_marcado">
+    <select class="form-control" name="tecnicas_marcado" id="tecnicas_marcado">
         <option value="serigrafia"><?php _e('Serigrafía', 'cotizador-marcado-plugin'); ?></option>
         <option value="bordado"><?php _e('Bordado', 'cotizador-marcado-plugin'); ?></option>
         <option value="transfer"><?php _e('Transfer', 'cotizador-marcado-plugin'); ?></option>
@@ -48,11 +48,13 @@ if ($idioma_plugin === 'en') {
     $mostrar_tallas = get_option('mostrar_tallas');
     if (!$mostrar_tallas) :
     ?>
-        <div class="cotizador-color-selector">
+        <div class="cotizador-color-selector mt-4">
             <label for="colores_disponibles"><?php echo esc_html($colores_disponibles_text); ?></label>
-            <div class="cotizador-color" style="background-color: red;"></div>
-            <div class="cotizador-color" style="background-color: blue;"></div>
-            <div class="cotizador-color" style="background-color: black;"></div>
+            <div class="d-flex">
+                <div class="cotizador-color" style="background-color: red;"></div>
+                <div class="cotizador-color" style="background-color: blue;"></div>
+                <div class="cotizador-color" style="background-color: black;"></div>
+            </div>
         </div>
     <?php endif; ?>
 
@@ -60,7 +62,7 @@ if ($idioma_plugin === 'en') {
     // Mostrar el campo de tallas solo si no está seleccionado el checkbox en el backend
     if (!$mostrar_tallas) :
     ?>
-        <div class="cotizador-tallas-checkbox">
+        <div class="cotizador-tallas-checkbox mt-4">
             <input type="checkbox" name="mostrar_tallas" id="mostrar_tallas" value="1">
             <label for="mostrar_tallas"><?php echo esc_html($tallas_text); ?></label>
         </div>
@@ -70,35 +72,19 @@ if ($idioma_plugin === 'en') {
     // Mostrar el campo de tallas solo si no está seleccionado el checkbox en el backend
     if (!$mostrar_tallas) :
     ?>
-        <div class="cotizador-tallas-selector">
+        <div class="cotizador-tallas-selector mt-4">
             <label for="tallas_disponibles"><?php echo esc_html($tallas_text); ?></label>
-            <input type="text" name="tallas_disponibles" id="tallas_disponibles" placeholder="<?php _e('Ingresa las tallas disponibles', 'cotizador-marcado-plugin'); ?>">
+            <input type="text" class="form-control" name="tallas_disponibles" id="tallas_disponibles" placeholder="<?php _e('Ingresa las tallas disponibles', 'cotizador-marcado-plugin'); ?>">
         </div>
     <?php endif; ?>
 
-    <div class="cotizador-stock-minimo">
+    <div class="cotizador-stock-minimo mt-4">
         <label for="stock_minimo"><?php echo esc_html($stock_minimo_text); ?></label>
-        <input type="number" name="stock_minimo" id="stock_minimo" value="5" min="1">
+        <input type="number" class="form-control" name="stock_minimo" id="stock_minimo" value="5" min="1">
     </div>
 
-    <input type="submit" value="<?php echo esc_html($cotizar_text); ?>">
-    <div class="cotizador-total-price">
+    <input type="submit" class="btn btn-primary mt-4" value="<?php echo esc_html($cotizar_text); ?>">
+    <div class="cotizador-total-price mt-3">
         <strong><?php echo esc_html($precio_total_text); ?></strong>
     </div>
 </div>
-
-<script>
-// Script para mostrar u ocultar el campo de tallas según el checkbox
-document.addEventListener('DOMContentLoaded', function () {
-    const mostrarTallasCheckbox = document.getElementById('mostrar_tallas');
-    const tallasSelector = document.querySelector('.cotizador-tallas-selector');
-
-    mostrarTallasCheckbox.addEventListener('change', function () {
-        if (this.checked) {
-            tallasSelector.style.display = 'none';
-        } else {
-            tallasSelector.style.display = 'block';
-        }
-    });
-});
-</script>

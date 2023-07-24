@@ -1,33 +1,29 @@
-jQuery(document).ready(function($) {
-    // Manejar cambios en las opciones del cotizador
-    $('.cotizador-form select, .cotizador-form input[type="text"]').change(function() {
-      updateTotalPrice(); // Actualizar el precio total en tiempo real
-    });
-  
-    // Actualizar el precio total
-    function updateTotalPrice() {
-      var basePrice = parseFloat($('.cotizador-form').data('base-price'));
-      var selectedTechnique = $('.cotizador-form #tecnicas_marcado').val();
-      var stockMinimum = parseInt($('.cotizador-form #stock_minimo').val());
-  
-      // Implementar la lógica de cálculo del precio total en función de las opciones seleccionadas
-      // Puedes ajustar este cálculo según tus opciones de marcaje y requerimientos específicos.
-  
-      // Ejemplo: Si la técnica de marcaje es "serigrafia", agregar $2 por unidad como costo de serigrafía
-      var serigrafiaCost = 2; // Costo adicional por unidad para serigrafía
-      var totalPrice = basePrice;
-  
-      if (selectedTechnique === 'serigrafia') {
-        totalPrice += serigrafiaCost * stockMinimum;
-      }
-  
-      // Mostrar el precio total
-      $('.cotizador-total-price').html('<strong>Precio Total: </strong>' + formatPrice(totalPrice));
-    }
-  
-    // Formatear el precio en formato moneda
-    function formatPrice(price) {
-      return '$' + price.toFixed(2);
+document.addEventListener('DOMContentLoaded', function () {
+  // Script para mostrar u ocultar el campo de tallas según el checkbox
+  const mostrarTallasCheckbox = document.getElementById('mostrar_tallas');
+  const tallasSelector = document.querySelector('.cotizador-tallas-selector');
+
+  mostrarTallasCheckbox.addEventListener('change', function () {
+    if (this.checked) {
+      tallasSelector.style.display = 'none';
+    } else {
+      tallasSelector.style.display = 'block';
     }
   });
-  
+
+  // Script para calcular el precio total del producto
+  const basePriceInput = document.getElementById('base_price');
+  const quantityInput = document.getElementById('quantity');
+  const totalField = document.querySelector('.cotizador-total-price');
+
+  function updateTotalPrice() {
+    const basePrice = parseFloat(basePriceInput.value);
+    const quantity = parseInt(quantityInput.value);
+    const total = basePrice * quantity;
+
+    totalField.textContent = `Precio Total: $${total.toFixed(2)}`;
+  }
+
+  basePriceInput.addEventListener('change', updateTotalPrice);
+  quantityInput.addEventListener('change', updateTotalPrice);
+});

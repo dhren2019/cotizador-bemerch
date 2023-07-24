@@ -44,6 +44,6 @@ add_action('woocommerce_product_data_panels', 'cotizador_marcado_product_tab_con
 // Guardar los datos del cotizador cuando se guarda el producto
 function cotizador_marcado_save_product($post_id) {
     $tecnicas_marcado = isset($_POST['tecnicas_marcado']) ? sanitize_text_field($_POST['tecnicas_marcado']) : '';
-    update_post_meta($post_id, 'tecnicas_marcado', $tecnicas_marcado);
+    update_post_meta($post_id, '_tecnicas_marcado', $tecnicas_marcado);
 }
 add_action('woocommerce_process_product_meta', 'cotizador_marcado_save_product');
